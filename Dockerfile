@@ -33,9 +33,9 @@ COPY . .
 
 # Build & export static
 # Pastikan next.config.js memiliki: output: 'export' dan images: { unoptimized: true } bila perlu
-RUN if [ -f pnpm-lock.yaml ]; then pnpm run build && pnpm run export; \
-    elif [ -f yarn.lock ]; then yarn build && yarn export; \
-    else npm run build && npm run export; fi
+RUN if [ -f pnpm-lock.yaml ]; then pnpm run build; \
+    elif [ -f yarn.lock ]; then yarn build; \
+    else npm run build; fi
 # Hasil export default ke ./out
 
 # ---- Stage 2: Runtime (Nginx) ----
