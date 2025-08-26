@@ -4,7 +4,7 @@ on:
   push:
     branches: [main] # tetap build artifact tiap push ke main (opsional)
     tags:
-      - "v*.*.*" # <— penting: jalan saat tag rilis
+      - 'v*.*.*' # <— penting: jalan saat tag rilis
   workflow_dispatch:
 
 jobs:
@@ -21,8 +21,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "22" # 22 stabil untuk Next; 22 juga oke kalau project-mu kompatibel
-          cache: "npm"
+          node-version: '22' # 22 stabil untuk Next; 22 juga oke kalau project-mu kompatibel
+          cache: 'npm'
 
       - name: Install deps
         run: npm ci

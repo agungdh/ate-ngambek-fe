@@ -1,15 +1,15 @@
-"use client";
+'use client'
 
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import DefaultLayout from "@/app/_layouts/default";
+import * as React from 'react'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import DefaultLayout from '@/app/_layouts/default'
 
 export default function Surimbim() {
   return (
     <>
       <DefaultLayout>
-        <Box sx={{ width: "100%", maxWidth: 500 }}>
+        <Box sx={{ width: '100%', maxWidth: 500 }}>
           <Typography variant="h1" gutterBottom>
             h1. Heading
           </Typography>
@@ -29,36 +29,34 @@ export default function Surimbim() {
             h6. Heading
           </Typography>
           <Typography variant="subtitle1" gutterBottom>
-            subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Quos blanditiis tenetur
+            subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis
+            tenetur
           </Typography>
           <Typography variant="subtitle2" gutterBottom>
-            subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Quos blanditiis tenetur
+            subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis
+            tenetur
           </Typography>
           <Typography variant="body1" gutterBottom>
-            body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
-            consectetur, neque doloribus, cupiditate numquam dignissimos laborum
-            fugiat deleniti? Eum quasi quidem quibusdam.
+            body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
+            unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate
+            numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
           </Typography>
           <Typography variant="body2" gutterBottom>
-            body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
-            consectetur, neque doloribus, cupiditate numquam dignissimos laborum
-            fugiat deleniti? Eum quasi quidem quibusdam.
+            body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
+            unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate
+            numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
           </Typography>
-          <Typography variant="button" gutterBottom sx={{ display: "block" }}>
+          <Typography variant="button" gutterBottom sx={{ display: 'block' }}>
             button text
           </Typography>
-          <Typography variant="caption" gutterBottom sx={{ display: "block" }}>
+          <Typography variant="caption" gutterBottom sx={{ display: 'block' }}>
             caption text
           </Typography>
-          <Typography variant="overline" gutterBottom sx={{ display: "block" }}>
+          <Typography variant="overline" gutterBottom sx={{ display: 'block' }}>
             overline text
           </Typography>
         </Box>
       </DefaultLayout>
     </>
-  );
+  )
 }
