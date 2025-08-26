@@ -2,9 +2,9 @@ name: Build Static & Upload ZIP
 
 on:
   push:
-    branches: [ main ]              # tetap build artifact tiap push ke main (opsional)
+    branches: [main] # tetap build artifact tiap push ke main (opsional)
     tags:
-      - 'v*.*.*'                    # <— penting: jalan saat tag rilis
+      - "v*.*.*" # <— penting: jalan saat tag rilis
   workflow_dispatch:
 
 jobs:
@@ -21,8 +21,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '22'        # 22 stabil untuk Next; 22 juga oke kalau project-mu kompatibel
-          cache: 'npm'
+          node-version: "22" # 22 stabil untuk Next; 22 juga oke kalau project-mu kompatibel
+          cache: "npm"
 
       - name: Install deps
         run: npm ci
@@ -36,8 +36,7 @@ jobs:
       - name: Build & Export
         run: |
           npm run build
-#          npx next export           # pastikan folder out/ dibuat
-
+      #          npx next export           # pastikan folder out/ dibuat
       - name: Archive to ZIP
         run: |
           if [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
@@ -59,10 +58,10 @@ jobs:
 
   release:
     needs: build
-    if: startsWith(github.ref, 'refs/tags/v')     # hanya jalan saat push tag versi
+    if: startsWith(github.ref, 'refs/tags/v') # hanya jalan saat push tag versi
     runs-on: ubuntu-latest
     permissions:
-      contents: write                              # <— butuh write untuk bikin/ubah Release
+      contents: write # <— butuh write untuk bikin/ubah Release
     steps:
       - uses: actions/download-artifact@v4
         with:
