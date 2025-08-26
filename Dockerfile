@@ -19,9 +19,9 @@ RUN if [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile; \
 # Salin source dan build + export
 COPY . .
 # Pastikan next.config.js: output: 'export' (lihat catatan di bawah)
-RUN if [ -f pnpm-lock.yaml ]; then pnpm run build && pnpm run export; \
-    elif [ -f yarn.lock ]; then yarn build && yarn export; \
-    else npm run build && npm run export; fi
+RUN if [ -f pnpm-lock.yaml ]; then pnpm run build; \
+    elif [ -f yarn.lock ]; then yarn build; \
+    else npm run build; fi
 # Hasil export: ./out
 
 
