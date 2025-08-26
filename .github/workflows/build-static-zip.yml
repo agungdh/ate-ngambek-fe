@@ -40,8 +40,14 @@ jobs:
 
       - name: Archive to ZIP
         run: |
-          ts=$(date +%Y%m%d-%H%M%S)
-          zip -r "site-${{ github.sha }}-$ts.zip" out
+          if [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
+            # kalau build dipicu oleh tag → pakai tag name
+            zip -r "site-${GITHUB_REF_NAME}.zip" out
+          else
+            # kalau bukan tag → fallback ke SHA + timestamp
+            ts=$(date +%Y%m%d-%H%M%S)
+            zip -r "site-${GITHUB_SHA}-$ts.zip" out
+          fi
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
