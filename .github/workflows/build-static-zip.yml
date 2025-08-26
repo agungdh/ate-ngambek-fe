@@ -1,0 +1,55 @@
+name: Build Static & Upload ZIP
+
+on:
+  push:
+    branches: [ main ]   # ganti kalau pakai branch lain
+  workflow_dispatch:      # bisa run manual dari tab Actions
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      actions: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build & Export
+        run: npm run build        # next build
+
+      - name: Archive to ZIP
+        run: |
+          ts=$(date +%Y%m%d-%H%M%S)
+          zip -r "site-${{ github.sha }}-$ts.zip" out
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-site-zip
+          path: site-*.zip
+          if-no-files-found: error
+          compression-level: 9
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: static-site-zip
+          path: .
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: site-*.zip
