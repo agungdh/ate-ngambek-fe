@@ -2,7 +2,7 @@ name: Build Native & Push Docker image
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
     tags: [ "v*.*.*" ]
 
 env:
